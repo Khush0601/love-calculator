@@ -1,0 +1,152 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+           margin: 0%;
+           padding: 0%;
+        }
+        body{
+            width: 100vw;
+            height:100vh;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .love-container{
+            width: 400px;
+            height:500px;
+            
+            border-radius: 10px;
+            border: 5px solid gray;
+           position: relative;
+           display: flex;
+           flex-direction: column;
+        }
+        .love-button-container{
+            position: absolute;
+            bottom: 4%;
+            
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .love-button-container>button{
+            padding:  1em 2em;
+            border-radius: 10px;
+            outline: none !important;
+            cursor: pointer;
+            transition: 0.25s ease-in-out;
+            text-transform: capitalize;
+        }
+        .love-button-container>button:hover{
+            background-color: rgb(204, 201, 201);
+
+        }
+        .love-container>header{
+            width: 100%;
+            height: 100px;
+            
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom: 5px solid gray;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .love-container>footer{
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 2em ;
+            text-transform: capitalize;
+            
+           
+        }
+        .progress-container{
+            width: 250px;
+            height: 30px;
+            border-radius: 7px;
+            border: 2px solid green;
+
+        }
+        .progress-container>div{
+            height: 28px;
+            background-color: rgb(221, 116, 116);
+            border-radius: 5px;
+            width: 50%;
+        }
+        
+    </style>
+</head>
+<body>
+   <div class="love-container">
+<header>
+    <h4 id="message">LOVE CALCULATOR</h4>
+    <div class="progress-container">
+        <div id="progress-indicator">
+
+        </div>
+
+    </div>
+</header>
+<footer>
+    <div><input id="your-name" placeholder="enter name" autofocus/></div>
+    <div><input id="partner-name" placeholder="enter partner name"/></div>
+</footer>
+
+
+
+
+
+
+
+
+
+    <div class="love-button-container">
+        <button class="button">calculate love </button>
+    </div>
+   </div>
+   <script>
+   let inputYourName=document.getElementById('your-name')
+   let inputYourPartnerName=document.getElementById('partner-name')
+   let buttonElement=document.querySelector('.button')
+   let progressIndicator=document.getElementById('progress-indicator')
+   let message=document.getElementById('message')
+
+
+   let setYourName='';
+  
+   inputYourName.addEventListener(('input'),(event)=>{
+    setYourName=event.target.value
+   
+   })
+   let setYourPartnerName='';
+   inputYourPartnerName.addEventListener(('input'),(event)=>{
+    setYourPartnerName=event.target.value
+   
+   })
+   buttonElement.addEventListener('click',()=>{
+     if(!setYourName && setYourPartnerName){
+        return
+     }
+
+
+   let number=Math.floor(Math.random()*100)
+   progressIndicator.style.width=`${number}%`
+   message.innerHTML=`${setYourName} <span style='color:red'>❤</span> ${setYourPartnerName}: ${number}%`
+   console.log(number)
+   })
+
+   </script>
+</body>
+</html>
